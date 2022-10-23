@@ -1,0 +1,52 @@
+$pending-color: #c22929;
+$completed-color: #3a9947;
+
+@mixin themeBox($theme){
+    background-color: $theme;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+@mixin counter($theme) {
+    color: $theme;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.todo-counter{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+
+    .pending{
+        @include themeBox(#333);
+
+        span{
+            @include counter(#333)
+        }
+    }
+    .pending:hover{
+        background-color: $pending-color;
+    }
+    
+    .completed{
+        @include themeBox(gray);
+        
+        span{
+            @include counter(#333)
+        }
+    }
+    .completed:hover{
+        background-color: $completed-color;
+    }
+}

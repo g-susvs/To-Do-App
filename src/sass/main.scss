@@ -1,0 +1,28 @@
+@use './base/reset';
+
+@import './components/todoHeader';
+@import './components/todoAdd';
+@import './components/todoCounter';
+@import './components/todoList';
+
+.container {
+    padding: 30px;
+    background-color: white;
+}
+@media (min-width:600px) {
+    body{
+        height: 100vh;
+        background-image: linear-gradient(#4cc9f0, #3877be);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+    }
+    .container{
+        margin-top: 50px;
+        width: 600px;
+        height: 700px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
