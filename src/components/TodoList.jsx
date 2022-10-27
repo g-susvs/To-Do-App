@@ -1,14 +1,24 @@
+import { useContext } from "react"
+import { TodoContext } from "../context/TodoContext"
 import { TodoItem } from "./TodoItem"
 
 export const TodoList = () => {
 
-    const todos = ['dormir', 'cenar', 'leer', 'programar','dormir', 'cenar', 'leer', 'programar','dormir', 'cenar', 'leer', 'programar','dormir', 'cenar', 'leer', 'programar']
+  const {todos, activeTodo} = useContext(TodoContext)
+  let todoArr
+
+  if(activeTodo == true || activeTodo == false){
+    todoArr = todos.filter( todo => todo.done == activeTodo)
+  }
+  if(activeTodo == 'all'){
+    todoArr = todos
+  }
 
   return (
     <ul className="todo-list">
         {
-            todos.map((todo, i) => (
-                <TodoItem key={i} todo={todo}/>
+            todoArr.map((todo) => (
+                <TodoItem key={todo.id} todo={todo}/>
             ))
         }
     </ul>

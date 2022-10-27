@@ -1,5 +1,3 @@
-$pending-color: #c22929;
-$completed-color: #3a9947;
 
 @mixin themeBox($theme){
     background-color: $theme;
@@ -9,6 +7,7 @@ $completed-color: #3a9947;
     font-size: 1rem;
     display: flex;
     justify-content: space-between;
+    transition: all 300ms;
     cursor: pointer;
 }
 @mixin counter($theme) {
@@ -27,6 +26,7 @@ $completed-color: #3a9947;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-top: 20px;
+    font-weight: bold;
 
     .pending{
         @include themeBox(#333);
@@ -37,6 +37,18 @@ $completed-color: #3a9947;
     }
     .pending:hover{
         background-color: $pending-color;
+
+        span{
+            color: $pending-color
+        }
+    }
+    .active-false{
+        background-color: $pending-color;
+        animation: 1.5s infinite pending ;
+
+        span{
+            color: $pending-color
+        }
     }
     
     .completed{
@@ -48,5 +60,41 @@ $completed-color: #3a9947;
     }
     .completed:hover{
         background-color: $completed-color;
+        
+        span{
+            color: $completed-color
+        }
     }
+    .active-true{
+        background-color: $completed-color;
+        animation: 1.5s infinite completed ;
+        
+        span{
+            color: $completed-color
+        } 
+    }
+
+    @keyframes completed{
+        0%{
+            background-color: $completed-color;
+        }
+        50%{
+            background-color: $completed-second-color;
+        }
+        100%{
+            background-color: $completed-color;
+        }
+    }
+    @keyframes pending{
+        0%{
+            background-color: $pending-color;
+        }
+        50%{
+            background-color: $pending-second-color;
+        }
+        100%{
+            background-color: $pending-color;
+        }
+    }
+    
 }

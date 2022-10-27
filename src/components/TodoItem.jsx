@@ -1,20 +1,65 @@
+import { useContext, useRef, useState } from "react"
+import { TodoContext } from "../context/TodoContext"
+import { BtnDelete, BtnEdit, BtnSave } from "./Buttons"
 
 export const TodoItem = ({ todo }) => {
+
+
+    const [edit, setEdit] = useState(false)
+    const [description, setDescription] = useState(todo.description)
+    const inputRef = useRef('')
+
+    const { handleToggleTodo, handleEditTodo } = useContext(TodoContext)
+
+    const onInputChange = (event) => {
+        const { value } = event.target
+        setDescription(value)
+    }
+    const focusInput = () => {
+        inputRef.current.focus()
+    }
+    const onKeyUp = (event) => {
+        if(event.keyCode == 13){
+            handleEditTodo( todo.id ,description)
+            setEdit(false)
+        }
+      }
     return (
         <li
             className="todo-item"
         >
-            <input type="checkbox"/>
-            <p>
-                {todo}
-            </p>
-            
-            
+            <input
+                className="check"
+                type="checkbox"
+                onClick={ () => handleToggleTodo(todo.id) }
+                defaultChecked={todo.done}
+                />
+            {
+                (!edit)
+                ? <label>
+                        {todo.description}
+                    </label>
+                    : <input
+                    ref={inputRef}
+                    className="input-edit-todo"
+                    placeholder="Agrega una tarea"
+                    value={description}
+                    onChange={onInputChange}
+                    onKeyUp={onKeyUp}
+                    />
+            }
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="btn-delete bi bi-trash-fill" viewBox="0 0 16 16">
-  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-</svg>
-          
+            <div className="options">
+                {
+                    (!edit)
+                        ? <BtnEdit id={todo.id} edit={setEdit} focus={focusInput} />
+                        : <BtnSave id={todo.id} description={description} edit={setEdit} />
+                }
+
+                <BtnDelete id={todo.id} />
+
+            </div>
+
         </li>
     )
 }
