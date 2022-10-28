@@ -39,8 +39,14 @@
             .input-edit-todo{
                 margin-left: 10px;
                 padding-left: 5px;
+                width: 95%;
                 font-size: 1rem;
                 border-radius: 5px;
+                border: 1px solid gray;
+            }
+            .input-edit-todo:focus{
+                outline: none;
+                border: 2px solid rebeccapurple;
             }
             
             .options {
@@ -76,7 +82,7 @@
 
     @media (min-width:600px) {
         .todo-list {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         // .todo-list::-webkit-scrollbar{

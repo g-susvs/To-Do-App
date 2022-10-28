@@ -4,7 +4,7 @@
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: flex;
     justify-content: space-between;
     transition: all 300ms;
@@ -97,4 +97,15 @@
         }
     }
     
+}
+
+@media (min-width:600px) {
+    .todo-counter{
+        .completed{
+            font-size: 1rem;
+        }
+        .pending{
+            font-size: 1rem;
+        }
+    }
 }
