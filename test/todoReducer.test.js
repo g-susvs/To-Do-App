@@ -52,7 +52,7 @@ describe('Pruebas en todoReducer', () => {
         const todos = todoReducer(initialState, action);
         expect(todos[0].done).toBeTruthy();
 
-    })
+    });
 
     test('debe editar un todo', () => { 
         const description = "Hacer testing";
@@ -68,5 +68,5 @@ describe('Pruebas en todoReducer', () => {
         const todos = todoReducer(initialState, action);
         expect(todos[0].description).toBe(description);
 
-    })
+    });
 })

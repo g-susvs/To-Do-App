@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Prueba <TodoApp /> debe rederizar correctamente 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="todo-header"
+    >
+      <h1>
+        TODO-APP
+      </h1>
+    </div>
+    <div
+      class="todo-add"
+    >
+      <input
+        placeholder="Agrega una tarea"
+        type="text"
+        value=""
+      />
+      <button
+        class="btn-add"
+      >
+        +
+      </button>
+    </div>
+    <section
+      class="todo-counter"
+    >
+      <div
+        class="pending null"
+      >
+        Pendientes
+        <span
+          class="counter"
+        >
+          0
+        </span>
+      </div>
+      <div
+        class="completed null"
+      >
+        Completados
+        <span
+          class="counter"
+        >
+          0
+        </span>
+      </div>
+    </section>
+    <ul
+      class="todo-list"
+    />
+  </div>
+</div>
+`;
